@@ -1,9 +1,20 @@
+import { forwardRef, useImperativeHandle, useRef } from 'react'
 import DatePicker from 'react-datepicker'
 import { useRecoilState } from 'recoil'
 import { inputState } from '../recoil/atom'
 
-const FormInput = ({ label, type, name }) => {
+const FormInput = ({ label, type, name }, ref) => {
     const [value, setValue] = useRecoilState(inputState)
+    const inputRef = useRef()
+
+    useImperativeHandle(ref, () => ({
+        focus: () => {
+            inputRef.current.focus()
+        },
+        setFocus: () => {
+            inputRef.current.setFocus()
+        }
+    }))
 
     const onChangeHandler = (e) => {
         const val = name === 'tanggal' ? e : e.target.value
@@ -26,13 +37,19 @@ const FormInput = ({ label, type, name }) => {
                         dateFormat={'dd/MM/yyyy'}
                         onChange={onChangeHandler}
                         selected={value[name]}
-                    />
+                        ref={inputRef} />
                     :
-                    <input className='bg-white border border-black rounded my-2 py-2 px-1 w-full' type={type} name={name} value={value[name]} onChange={onChangeHandler} />
+                    <input
+                        className='bg-white border border-black rounded my-2 py-2 px-1 w-full'
+                        type={type}
+                        name={name}
+                        value={value[name]}
+                        onChange={onChangeHandler}
+                        ref={inputRef} />
                 }
             </div>
         </div>
     )
 }
 
-export default FormInput
+export default forwardRef(FormInput)

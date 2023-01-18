@@ -2,9 +2,9 @@ import { useRecoilValue, useSetRecoilState } from "recoil"
 import { inputState } from "../recoil/atom"
 import { dataStateWithTotal } from "../recoil/selector"
 
-const FormButton = ({ label, btnStyle }) => {
+const FormButton = ({ label, btnStyle, refs }) => {
     const val = useRecoilValue(inputState)
-    const newData = useSetRecoilState(dataStateWithTotal)
+    const setData = useSetRecoilState(dataStateWithTotal)
     const style = {
         primary: 'bg-blue-500 hover:bg-blue-700',
         success: 'bg-green-500 hover:bg-green-700',
@@ -13,7 +13,11 @@ const FormButton = ({ label, btnStyle }) => {
     }
 
     const onClickHandler = () => {
-        newData(val)
+        // const newData = {
+        //     ...val, id : Date.now()
+        // }
+        // setData(newData)
+        refs.current['keterangan'].focus()
     }
 
     return (

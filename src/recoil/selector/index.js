@@ -17,8 +17,9 @@ export const dataStateWithTotal = selector({
     },
     set: ({ get, set }, newData) => {
         const data = [...get(dataState)]
+        const tanggal = typeof newData['tanggal'] === 'number' ? new Date(newData['tanggal']) : newData['tanggal']
         data.push({
-            ...newData, tanggal: newData['tanggal'].getTime()
+            ...newData, tanggal: tanggal.getTime()
         })
         set(dataState, data)
     }

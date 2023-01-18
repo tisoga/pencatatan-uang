@@ -4,7 +4,7 @@ export const inputState = atom({
     key: 'inputState',
     default: {
         id: 'new',
-        uang: '',
+        uang: 0,
         jenis: '',
         keterangan: '',
         tanggal: Date.now(),
