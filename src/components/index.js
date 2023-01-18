@@ -1,11 +1,7 @@
-import TableRow from "./TableRow";
-import FormInput from "./FormInput";
-import FormRadio from "./FormRadio";
-import FormButton from "./FormButton";
+import Table from "./Table";
+import Form from "./Form";
 
 export {
-    TableRow,
-    FormInput,
-    FormRadio,
-    FormButton
+    Table,
+    Form
 }
