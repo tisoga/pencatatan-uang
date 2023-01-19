@@ -19,14 +19,19 @@ export const dataState = atom({
             uang: 100000,
             jenis: 'D',
             keterangan: 'Start',
-            tanggal: Date.now(),
+            tanggal: 1672746403000,
         },
         {
             id: '2',
             uang: 1000,
             jenis: 'K',
-            keterangan: 'Test 2',
-            tanggal: Date.now(),
+            keterangan: 'Beli Cilok',
+            tanggal: 1673351203000,
         },
     ]
+})
+
+export const modeState = atom({
+    key: 'modeState',
+    default: 'newData'
 })

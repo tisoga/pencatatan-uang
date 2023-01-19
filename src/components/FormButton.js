@@ -1,10 +1,12 @@
-import { useRecoilValue, useSetRecoilState } from "recoil"
-import { inputState } from "../recoil/atom"
+import { useRecoilValue, useResetRecoilState, useSetRecoilState } from "recoil"
+import { inputState, modeState } from "../recoil/atom"
 import { dataStateWithTotal } from "../recoil/selector"
 
-const FormButton = ({ label, btnStyle, refs }) => {
+const FormButton = ({ label, btnStyle, refs, onClick, setData }) => {
     const val = useRecoilValue(inputState)
-    const setData = useSetRecoilState(dataStateWithTotal)
+    const changeMode = useSetRecoilState(modeState)
+    const resetVal = useResetRecoilState(inputState)
+    const dataTable = useRecoilValue(dataStateWithTotal)
     const style = {
         primary: 'bg-blue-500 hover:bg-blue-700',
         success: 'bg-green-500 hover:bg-green-700',
@@ -13,11 +15,15 @@ const FormButton = ({ label, btnStyle, refs }) => {
     }
 
     const onClickHandler = () => {
-        // const newData = {
-        //     ...val, id : Date.now()
-        // }
-        // setData(newData)
-        refs.current['keterangan'].focus()
+        if (label === 'Tambah Data Baru') {
+            onClick(val, refs, changeMode, resetVal)
+        }
+        else if (label === 'Export Data to Excel File') {
+            onClick(dataTable)
+        }
+        else {
+            onClick(val, refs, setData, resetVal)
+        }
     }
 
     return (

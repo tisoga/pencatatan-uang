@@ -1,9 +1,26 @@
-import { useRecoilValue } from "recoil"
-import { dataStateWithTotal } from "../recoil/selector"
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil"
+import { inputState } from "../recoil/atom"
+import { changeModeState, dataStateWithTotal } from "../recoil/selector"
 import TableRow from "./TableRow"
 
-const Table = () => {
+const Table = ({ refs }) => {
     const tableData = useRecoilValue(dataStateWithTotal)
+    const [inputVal, setInputVal] = useRecoilState(inputState)
+    const changeMode = useSetRecoilState(changeModeState)
+
+    const onClickHandler = (id) => {
+        refs.current[id].clicked()
+        changeMode('updateData')
+        tableData.forEach((item) => {
+            if (item.id !== id) {
+                refs.current[item.id].unClicked()
+            }
+        })
+        setInputVal(
+            { ...inputVal, id: id }
+        )
+    }
+
     return (
         <div className="my-5">
             <table className="table-fixed">
@@ -18,7 +35,7 @@ const Table = () => {
                 </thead>
                 <tbody>
                     {tableData.map(data => (
-                        <TableRow data={data} key={data.id} />
+                        <TableRow data={data} key={data.id} ref={el => (refs.current[data.id]) = el} onClick={onClickHandler} />
                     ))}
                 </tbody>
             </table>
