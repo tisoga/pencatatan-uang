@@ -15,6 +15,7 @@ const App = () => {
   const dataTable = useRecoilValue(dataStateWithTotal)
 
   useEffect(() => {
+    document.title = 'Pencatatan Uang'
     if (inputVal.id !== 'new') {
       const data = dataTable.find(x => x.id === inputVal.id)
       if (data.jenis === 'K') {

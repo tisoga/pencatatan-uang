@@ -1,4 +1,11 @@
 import { atom } from "recoil";
+import { recoilPersist } from 'recoil-persist'
+import exampleData from "../../data/exampleData";
+
+const { persistAtom } = recoilPersist({
+    key: 'pencatatan-uang',
+    storage: localStorage
+})
 
 export const inputState = atom({
     key: 'inputState',
@@ -13,22 +20,8 @@ export const inputState = atom({
 
 export const dataState = atom({
     key: 'dataState',
-    default: [
-        {
-            id: '1',
-            uang: 100000,
-            jenis: 'D',
-            keterangan: 'Start',
-            tanggal: 1672746403000,
-        },
-        {
-            id: '2',
-            uang: 1000,
-            jenis: 'K',
-            keterangan: 'Beli Cilok',
-            tanggal: 1673351203000,
-        },
-    ]
+    default: exampleData,
+    effects_UNSTABLE: [persistAtom]
 })
 
 export const modeState = atom({
