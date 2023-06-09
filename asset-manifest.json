@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/pencatatan-uang/static/css/main.bbee3b3a.css",
-    "main.js": "/pencatatan-uang/static/js/main.26fcba25.js",
+    "main.css": "/pencatatan-uang/static/css/main.d4fd3819.css",
+    "main.js": "/pencatatan-uang/static/js/main.754e6b05.js",
     "static/js/787.3e7fd719.chunk.js": "/pencatatan-uang/static/js/787.3e7fd719.chunk.js",
     "index.html": "/pencatatan-uang/index.html",
-    "main.bbee3b3a.css.map": "/pencatatan-uang/static/css/main.bbee3b3a.css.map",
-    "main.26fcba25.js.map": "/pencatatan-uang/static/js/main.26fcba25.js.map",
+    "main.d4fd3819.css.map": "/pencatatan-uang/static/css/main.d4fd3819.css.map",
+    "main.754e6b05.js.map": "/pencatatan-uang/static/js/main.754e6b05.js.map",
     "787.3e7fd719.chunk.js.map": "/pencatatan-uang/static/js/787.3e7fd719.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.bbee3b3a.css",
-    "static/js/main.26fcba25.js"
+    "static/css/main.d4fd3819.css",
+    "static/js/main.754e6b05.js"
   ]
 }
